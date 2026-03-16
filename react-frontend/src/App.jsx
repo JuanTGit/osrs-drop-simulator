@@ -6,7 +6,7 @@ import SearchContent from './views/Search'
 
 function App() {
     return (
-		<div className='container main-layout'>
+		<div className='main-layout'>
 			<Router>
 				<Navbar />
 				<Routes>

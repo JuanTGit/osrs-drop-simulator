@@ -187,6 +187,7 @@ function DropSimulator(){
 
 	return(
 		<>
+		{/* <div className="container"> */}
 		<div className="row text-center content-area">
 			<div id="alert-container">
 				{alertMessage && (
@@ -270,6 +271,7 @@ function DropSimulator(){
 				{/* <!--  --> */}
 			</div>
 		</div>
+		{/* </div> */}
 		</>
 	)
 }

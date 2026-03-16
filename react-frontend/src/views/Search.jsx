@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import npcData from '../assets/NpcID.json';
 import FeaturedGame from "../components/FeaturedGame";
+import PopularBosses from "./PopularBosses.json"
 
 const SearchContent = () => {
     const apiDomain = import.meta.env.VITE_API_DOMAIN;
@@ -9,12 +10,7 @@ const SearchContent = () => {
     const [boss, setBoss] = useState({ boss: '' });
     const [bossData, setBossData] = useState(null);
     const [suggestions, setSuggestions] = useState([]);
-    const [featured, setFeatured] = useState([
-        { name: 'Nex', image: 'https://oldschool.runescape.wiki/images/thumb/Nex.png/270px-Nex.png?2a1b3' },
-        { name: 'Araxxor', image: 'https://oldschool.runescape.wiki/images/thumb/Araxxor.png/280px-Araxxor.png?35d2e' },
-        { name: 'Zulrah', image: 'https://oldschool.runescape.wiki/images/thumb/Zulrah_%28serpentine%29.png/250px-Zulrah_%28serpentine%29.png?29a54' },
-        { name: 'Vardorvis', image: 'https://oldschool.runescape.wiki/images/thumb/Vardorvis.png/200px-Vardorvis.png?48af8' }
-    ]);
+    const [featured, setFeatured] = useState(PopularBosses);
 
     const handleChange = (e) => {
         const input = e.target.value;
@@ -118,20 +114,20 @@ const SearchContent = () => {
                     </ul>
                 )}
             </div>
-            {bossData ? '' : <h1 className="mt-5">Popular Bosses</h1>}
-            {bossData ?
-                null
-                :
-                (<div className="row">
-                    {featured.map((game, index) => (
-                        <FeaturedGame
-                            key={index}
-                            cardInfo={game}
-                            onClick={() => handleSubmit(null, game.name)} // Pass the boss name directly
-                        />
-                    ))}
-                </div>)
-            }
+            {!bossData && (
+				<div className="popular-section">
+					<h1 className="mt-5">Popular Bosses</h1>
+					<div className="popular-bosses-track">
+						{featured.map((game, index) => (
+							<FeaturedGame
+								key={index}
+								cardInfo={game}
+								onClick={() => handleSubmit(null, game.name)}
+							/>
+						))}
+					</div>
+				</div>
+			)}
         </div>
     );
 };

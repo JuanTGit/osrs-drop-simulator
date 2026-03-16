@@ -1,0 +1,113 @@
+/* ── Carousel ─── */
+.popular-bosses-track {
+	display: flex !important;
+	flex-wrap: nowrap !important;
+	gap: 16px;
+	overflow-x: auto;
+	scroll-snap-type: x proximity;
+	scroll-behavior: auto;
+	padding: 8px 16px 16px;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: auto;
+	scrollbar-color: #6a5d4b #2c2416;
+	max-width: 73%;
+	box-sizing: border-box;
+}
+.popular-section {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 12px;
+    box-sizing: border-box;
+    text-align: center;
+	justify-items: center;
+}
+
+.popular-bosses-track::-webkit-scrollbar { height: 6px; }
+.popular-bosses-track::-webkit-scrollbar-track { background: #2c2416; border-radius: 3px; }
+.popular-bosses-track::-webkit-scrollbar-thumb { background: #6a5d4b; border-radius: 3px; }
+
+/* ── Card ── */
+.card-popular {
+	flex: 0 0 200px;
+	scroll-snap-align: start;
+	background-color: #6a5d4b;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 10px;
+	border-radius: 5px;
+	box-shadow: 4px 5px 4px 3px #00000023;
+	transition: transform 0.2s, border 0.2s;
+	border: 2px solid transparent;
+}
+
+.card-popular:hover {
+	transform: translateY(-4px);
+	border: 2px solid #30baa3;
+}
+
+/* ── Image container ── */
+.card-img-wrapper {
+	width: 100%;
+	height: 160px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	border-radius: 4px;
+	background: rgba(0, 0, 0, 0.15);
+}
+
+.card-img-popular {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
+}
+
+/* ── Button ── */
+.card-body-popular {
+	font-family: 'RunescapeUF', sans-serif;
+	font-weight: bold;
+	background-color: #ffffff;
+	color: #1a1a1a;
+	font-size: 1.1rem;
+	margin-top: 10px;
+	padding: 10px;
+	text-align: center;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.2s;
+	width: 100%;
+}
+
+.card-body-popular:hover {
+	transform: scale(1.03);
+	border-color: #30baa3;
+}
+
+.card-text {
+  	margin: 0;
+}
+
+
+@media (max-width: 768px) {
+	.card-popular {
+		flex: 0 0 160px;
+	}
+	.card-img-wrapper {
+		height: 120px;
+	}
+	.card-body-popular {
+		font-size: 0.95rem;
+	}
+	.popular-section{
+		padding: 0px;
+	}
+	.popular-bosses-track{
+		max-width: 90%;
+	}
+}
