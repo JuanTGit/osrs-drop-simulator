@@ -1,17 +1,12 @@
 /* ── Carousel ─── */
 .popular-bosses-track {
-	display: flex !important;
-	flex-wrap: nowrap !important;
-	gap: 16px;
-	overflow-x: auto;
-	scroll-snap-type: x proximity;
-	scroll-behavior: auto;
-	padding: 8px 16px 16px;
-	-webkit-overflow-scrolling: touch;
-	scrollbar-width: auto;
-	scrollbar-color: #6a5d4b #2c2416;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 16px;
+    overflow-x: hidden; /* hide scrollbar entirely since auto-scroll handles it */
+    padding: 8px 4px 16px;
+    -webkit-overflow-scrolling: touch;
 	max-width: 73%;
-	box-sizing: border-box;
 }
 .popular-section {
     width: 100vw;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import npcData from '../assets/NpcID.json';
 import FeaturedGame from "../components/FeaturedGame";
@@ -11,6 +11,63 @@ const SearchContent = () => {
     const [bossData, setBossData] = useState(null);
     const [suggestions, setSuggestions] = useState([]);
     const [featured, setFeatured] = useState(PopularBosses);
+
+	// Carousel loop
+	const trackRef = useRef(null);
+	const animationRef = useRef(null);
+
+	useEffect(() => {
+		const track = trackRef.current;
+		if (!track) return;
+	
+		// clone all cards and append them to the end
+		const originals = Array.from(track.children);
+		originals.forEach(card => {
+			const clone = card.cloneNode(true);
+			clone.setAttribute('aria-hidden', 'true');
+			track.appendChild(clone);
+		});
+	
+		const halfWidth = track.scrollWidth / 2;
+		let scrollPos = 0;
+		const speed = 0.5;
+		let isPaused = false;
+	
+		const step = () => {
+			if (!isPaused) {
+				scrollPos += speed;
+	
+				// when we hit the halfway point (end of originals), silently reset
+				if (scrollPos >= halfWidth) {
+					scrollPos = 0;
+					track.scrollLeft = 0;
+				} else {
+					track.scrollLeft = scrollPos;
+				}
+			}
+			animationRef.current = requestAnimationFrame(step);
+		};
+	
+		animationRef.current = requestAnimationFrame(step);
+	
+		const pause = () => { isPaused = true; };
+		const resume = () => { isPaused = false; };
+	
+		track.addEventListener('mouseenter', pause);
+		track.addEventListener('mouseleave', resume);
+	
+		return () => {
+			cancelAnimationFrame(animationRef.current);
+			track.removeEventListener('mouseenter', pause);
+			track.removeEventListener('mouseleave', resume);
+			// clean up clones on unmount
+			Array.from(track.children).forEach(child => {
+				if (child.getAttribute('aria-hidden') === 'true') {
+					track.removeChild(child);
+				}
+			});
+		};
+	}, [featured]);
 
     const handleChange = (e) => {
         const input = e.target.value;
@@ -117,7 +174,7 @@ const SearchContent = () => {
             {!bossData && (
 				<div className="popular-section">
 					<h1 className="mt-5">Popular Bosses</h1>
-					<div className="popular-bosses-track">
+					<div className="popular-bosses-track" ref={trackRef}>
 						{featured.map((game, index) => (
 							<FeaturedGame
 								key={index}
