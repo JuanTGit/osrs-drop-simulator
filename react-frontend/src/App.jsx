@@ -11,7 +11,8 @@ function App() {
 				<Navbar />
 				<Routes>
 					<Route path='/' element={<SearchContent />} />
-					<Route path="/simulator" element={<DropSimulator />} />
+					<Route path='/simulator' element={<DropSimulator />} />
+					{/* <Route path='/projects' element={<DropSimulator />} /> */}
 				</Routes>
 			</Router>
 		</div>

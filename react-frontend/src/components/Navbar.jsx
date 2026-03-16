@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { FaHome, FaGamepad, FaServicestack, FaEnvelope } from "react-icons/fa";
+import { FaHome, FaGamepad, FaGithub, FaLinkedin } from "react-icons/fa";
 
 function Navbar() {
 	const [collapsed, setCollapsed] = useState(true);
@@ -23,22 +23,22 @@ function Navbar() {
 					</Link>
 				</li>
 				<li>
-					<Link to="/games">
+					<Link to="/projects">
 						<FaGamepad className="icon" />
-						{!collapsed && <span>Games</span>}
+						{!collapsed && <span>Projects</span>}
 					</Link>
 				</li>
 				<li>
-					<Link to="/services">
-						<FaServicestack className="icon" />
-						{!collapsed	&& <span>Services</span>}
-					</Link>
+					<a href="https://github.com/JuanTGit" target="_blank" rel="noopener noreferrer">
+						<FaGithub className="icon" />
+						{!collapsed	&& <span>GitHub</span>}
+					</a>
 				</li>
 				<li>
-					<Link to="/contact">
-						<FaEnvelope className="icon" />
-						{!collapsed && <span>Contact</span>}
-					</Link>
+					<a href="https://www.linkedin.com/in/juan-tejeda/" target="_blank" rel="noopener noreferrer">
+						<FaLinkedin className="icon" />
+						{!collapsed && <span>LinkedIn</span>}
+					</a>
 				</li>
 			</ul>
 	  </nav>  
