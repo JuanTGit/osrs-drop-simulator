@@ -119,7 +119,8 @@ VITE_API_DOMAIN=http://localhost:5000
 
 ## Screenshots
 
-> Coming soon
+<img width="1917" height="908" alt="image" src="https://github.com/user-attachments/assets/e4e3ff11-80b9-47dd-b67a-d4138afa06ec" />
+
 
 ---
 
