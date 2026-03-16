@@ -71,7 +71,7 @@ p {
 }
 .card-body:hover {
 	transform: scale(1.05);
-	border: 2.2px solid #30baa3;
+	border: 2.2px solid #ffcc00;
 	margin-left: 2%;
 }
 #drop-details {
@@ -271,6 +271,15 @@ p{
 	justify-self: center;
 	max-width: 65%;
 
+}
+#button-addon2{
+	background-color: #ffcc00 !important;
+	border-color: #ffcc00 !important;
+	color: #2c2c2c !important;
+}
+#button-addon2:hover{
+	background-color: #ffcc00ee !important;
+	border-color: #cca300 !important;
 }
 
 /* Responsive Styles */

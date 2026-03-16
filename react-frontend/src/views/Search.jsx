@@ -138,7 +138,7 @@ const SearchContent = () => {
     return (
         <div className="row text-center content-area">
             <div className="search-content col-md-8 my-5">
-                {bossData ? '' : <h1 className="search-title">Drop Simulator!</h1>}
+                {bossData ? '' : <h1 className="search-title">OSRS Drop Simulator</h1>}
                 <form className="search-bar input-group" onSubmit={handleSubmit}>
                     <input
                         type="text"

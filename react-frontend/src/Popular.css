@@ -52,7 +52,7 @@
 
 .card-popular:hover {
 	transform: translateY(-4px);
-	border: 2px solid #30baa3;
+	border: 2px solid #ffcc00;
 }
 
 /* ── Image container ── */
@@ -93,7 +93,7 @@
 
 .card-body-popular:hover {
 	transform: scale(1.03);
-	border-color: #30baa3;
+	border-color: #ffcc00;
 }
 
 .card-text {
