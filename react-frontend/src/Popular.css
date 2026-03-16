@@ -7,6 +7,22 @@
     padding: 8px 4px 16px;
     -webkit-overflow-scrolling: touch;
 	max-width: 73%;
+
+	/* soft fade on both edges */
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+    );
 }
 .popular-section {
     width: 100vw;
@@ -18,10 +34,6 @@
     text-align: center;
 	justify-items: center;
 }
-
-.popular-bosses-track::-webkit-scrollbar { height: 6px; }
-.popular-bosses-track::-webkit-scrollbar-track { background: #2c2416; border-radius: 3px; }
-.popular-bosses-track::-webkit-scrollbar-thumb { background: #6a5d4b; border-radius: 3px; }
 
 /* ── Card ── */
 .card-popular {
