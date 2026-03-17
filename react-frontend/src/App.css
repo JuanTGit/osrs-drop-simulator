@@ -347,7 +347,7 @@ p{
 	padding-top: 140px;
 }
 #projects {
-	margin-top: 5%;
+	margin-top: 3%;
 }
 .content-area {
 	display: flex;
@@ -359,7 +359,7 @@ p{
 	margin-right: 10%;
 	height: 100%;
 	overflow-x: hidden;
-	margin-top: 5%;
+	margin-top: 3%;
 }
 
 
@@ -367,7 +367,7 @@ p{
     display: flex;
     justify-self: center;
     max-width: 65%;
-    border: 2px solid #8b6914;
+    border: 2px solid #6a5d4b;
     border-radius: 4px;
     overflow: hidden;
 }
