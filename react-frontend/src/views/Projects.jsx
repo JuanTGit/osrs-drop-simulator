@@ -34,8 +34,8 @@ function Projects(){
     const projectTwoIcons = [icons[3], icons[5], icons[7]]
 
     return(
-        <div className="container">
-            <h1 className="text-center mt-5" id="project-title">Projects</h1>
+        <div className="container" id="projects">
+            <h1 className="text-center" id="project-title">Projects</h1>
 
             {/* DropTable Project */}
             <Project 

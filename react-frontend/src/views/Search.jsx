@@ -11,6 +11,15 @@ const SearchContent = () => {
     const [bossData, setBossData] = useState(null);
     const [suggestions, setSuggestions] = useState([]);
     const [featured, setFeatured] = useState(PopularBosses);
+	const searchBarRef = useRef(null);
+	const [listWidth, setListWidth] = useState(0);
+
+	// Searchbar width
+	useEffect(() => {
+		if (searchBarRef.current) {
+			setListWidth(searchBarRef.current.offsetWidth);
+		}
+	}, []);
 
 	// Carousel loop
 	const trackRef = useRef(null);
@@ -135,11 +144,13 @@ const SearchContent = () => {
         }
     };
 
+
+
     return (
         <div className="row text-center content-area">
-            <div className="search-content col-md-8 my-5">
+            <div className="search-content col-md-8 mb-5" style={{ position: 'relative' }}>
                 {bossData ? '' : <h1 className="search-title">OSRS Drop Simulator</h1>}
-                <form className="search-bar input-group" onSubmit={handleSubmit}>
+                <form className="search-bar input-group" onSubmit={handleSubmit} ref={searchBarRef}>
                     <input
                         type="text"
                         className="form-control"
@@ -158,11 +169,12 @@ const SearchContent = () => {
                     </button>
                 </form>
                 {suggestions.length > 0 && (
-                    <ul className="list-group">
+                    <ul className="list-group" id="suggestion-list" style={{ width: `${listWidth}px` }}>
                         {suggestions.map((npc, index) => (
                             <li
                                 key={index}
                                 className="list-group-item list-group-item-action"
+								id="suggestion-list-item"
                                 onClick={() => handleSuggestionClick(npc)}
                             >
                                 <h5>{npc}</h5>

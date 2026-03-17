@@ -187,92 +187,91 @@ function DropSimulator(){
 
 	return(
 		<>
-		{/* <div className="container"> */}
-		<div className="row text-center content-area">
-			<div id="alert-container">
-				{alertMessage && (
-				<div
-					className="alert alert-warning alert-dismissible fade show"
-					role="alert"
-				>
-					{alertMessage}
-					<button
-					type="button"
-					className="btn-close"
-					aria-label="Close"
-					onClick={dismissAlert}
-					></button>
+			<div className="row text-center content-area">
+				<div id="alert-container">
+					{alertMessage && (
+					<div
+						className="alert alert-warning alert-dismissible fade show"
+						role="alert"
+					>
+						{alertMessage}
+						<button
+						type="button"
+						className="btn-close"
+						aria-label="Close"
+						onClick={dismissAlert}
+						></button>
+					</div>
+					)}
 				</div>
-				)}
-			</div>
 
 
-			<h1 className="text-center">{bossData[1]}</h1>
-			{/* <!-- Row 1 --> */}
-			<div className="row">
-				<div className="text-center">
-					<button type="button" className="btn btn-success col-6" id="get-drop" onClick={getData}>Roll Drop</button>
-					{autoDrop ? 
-						<button type="button" className="btn btn-danger col-2" id="get-drop" onClick={stopDropping}>Stop Auto Drop</button>
-						: 
-						<button type="button" className="btn btn-warning col-2" id="get-drop" onClick={startDropping}>Auto Drop</button>}
+				<h1 className="text-center">{bossData[1]}</h1>
+				{/* <!-- Row 1 --> */}
+				<div className="row">
+					<div className="text-center">
+						<button type="button" className="btn btn-success col-6" id="get-drop" onClick={getData}>Roll Drop</button>
+						{autoDrop ? 
+							<button type="button" className="btn btn-danger col-2" id="get-drop" onClick={stopDropping}>Stop Auto Drop</button>
+							: 
+							<button type="button" className="btn btn-warning col-2" id="get-drop" onClick={startDropping}>Auto Drop</button>}
+					</div>
 				</div>
-			</div>
 
-			{/* <!-- Row 2 Current Drop --> */}
-			<div className="row">
-				<div className="col-md-5 col-12 mt-5">
-					{/* <!-- New Dropped Item --> */}
-						<h4 className="text-center" id="kill-count">Total Kills: {statData.kills}</h4>
-							{currentDrop.itemName ? 	
-							<div className="card-body text-center">
-								<h4 id="item-name">You received {Number(currentDrop.quantity).toLocaleString()} x {currentDrop.itemName}</h4>
-								<img src={currentDrop.image} alt="" id="dropped-item-img" className={animationClass}/>
-								<h5 className="card-text mt-1" id="dropped-item-details">Value: {Number(currentDrop.value).toLocaleString()}</h5>
-								<h5 className="card-text mt-1" id="dropped-item-details">Drop Rate: {currentDrop.rarity}</h5>
-								<a href="" className="btn btn-danger" id="remove-item" onClick={(e) => {e.preventDefault(); handleRemoveItem(currentDrop.itemName)}}>Drop Item</a>
+				{/* <!-- Row 2 Current Drop --> */}
+				<div className="row">
+					<div className="col-md-5 col-12 mt-5" id="current-dropped-items">
+						{/* <!-- New Dropped Item --> */}
+							<h4 className="text-center" id="kill-count">Total Kills: {statData.kills}</h4>
+								{currentDrop.itemName ? 	
+								<div className="card-body text-center">
+									<h4 id="item-name">You received {Number(currentDrop.quantity).toLocaleString()} x {currentDrop.itemName}</h4>
+									<img src={currentDrop.image} alt="" id="dropped-item-img" className={animationClass}/>
+									<h5 className="card-text mt-1" id="dropped-item-details">Value: {Number(currentDrop.value).toLocaleString()}</h5>
+									<h5 className="card-text mt-1" id="dropped-item-details">Drop Rate: {currentDrop.rarity}</h5>
+									<a href="" className="btn btn-danger" id="remove-item" onClick={(e) => {e.preventDefault(); handleRemoveItem(currentDrop.itemName)}}>Drop Item</a>
+								</div>
+							: 
+								<div className="card-body text-center">
+									<h4 id="item-name"></h4>
+									<img src="https://oldschool.runescape.wiki/images/Guide_prices.png" alt="" id="dropped-item-img"/>
+									<h5 className="card-text mt-1" id="dropped-item-details">Drop Details</h5>
+									<a href="" className="btn btn-danger" id="remove-item">Drop Item</a>
+								</div>
+								}
+							<div className="mt-2">
+								<img className="" src={statData.image} alt="" id="boss-img"/>
 							</div>
-						: 
-							<div className="card-body text-center">
-								<h4 id="item-name"></h4>
-								<img src="https://oldschool.runescape.wiki/images/Guide_prices.png" alt="" id="dropped-item-img"/>
-								<h5 className="card-text mt-1" id="dropped-item-details">Drop Details</h5>
-								<a href="" className="btn btn-danger" id="remove-item">Drop Item</a>
+							{statData.image ? <div className="w-100 justify-content-center d-flex">
+								<object className="shadow" id="shadow"></object>
+							</div> : <></>}
+							
+					</div>
+					
+				{/* <!-- Row 3 Inventory --> */}
+					{/* <!-- Inventory --> */}
+					<div className="col-md-7 col-12 mt-5">
+							<h4 className="text-center mb-4" id="total-value">Total Value: {statData.value.toLocaleString()} gp</h4>
+							<ul className="list-group list-group-flush" id="drop-details">
+								{Object.keys(inventoryItems).map(key => (
+									<InventoryItem
+									key={key}
+									itemName={inventoryItems[key].itemName}
+									quantity={inventoryItems[key].quantity || 0}
+									value={inventoryItems[key].value || 0}
+									image={inventoryItems[key].image}
+									/>
+								))}
+							</ul>
+							<div className="clear-inventory">
+								<button type="button" className="btn btn-danger col-3" id="clear-inventory" onClick={handleClearInventory}>Clear Inventory</button>
 							</div>
-							}
-						<div className="mt-2">
-							<img className="" src={statData.image} alt="" id="boss-img"/>
-						</div>
-						{statData.image ? <div className="w-100 justify-content-center d-flex">
-							<object className="shadow" id="shadow"></object>
-						</div> : <></>}
-						
+					</div>
+					{/* <!--  --> */}
 				</div>
-				
-			{/* <!-- Row 3 Inventory --> */}
-				{/* <!-- Inventory --> */}
-				<div className="col-md-7 col-12 mt-5">
-						<h4 className="text-center mb-4" id="total-value">Total Value: {statData.value.toLocaleString()} gp</h4>
-						<ul className="list-group list-group-flush" id="drop-details">
-							{Object.keys(inventoryItems).map(key => (
-								<InventoryItem
-								key={key}
-								itemName={inventoryItems[key].itemName}
-								quantity={inventoryItems[key].quantity || 0}
-								value={inventoryItems[key].value || 0}
-								image={inventoryItems[key].image}
-								/>
-							))}
-						</ul>
-						<div className="clear-inventory">
-							<button type="button" className="btn btn-danger col-3" id="clear-inventory" onClick={handleClearInventory}>Clear Inventory</button>
-						</div>
-				</div>
-				{/* <!--  --> */}
 			</div>
-		</div>
-		{/* </div> */}
 		</>
+		
 	)
 }
 
