@@ -446,6 +446,13 @@ p{
 	.vertical-navbar{
 		display: none !important;
 	}
+	.content-area.nav-collapsed {
+		margin-left: 0%;
+	}
+	
+	.content-area.nav-expanded {
+		margin-left: 0%;
+	}
 }
 
 
