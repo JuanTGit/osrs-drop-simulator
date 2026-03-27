@@ -3,10 +3,13 @@
     display: flex !important;
     flex-wrap: nowrap !important;
     gap: 16px;
-    overflow-x: hidden; /* hide scrollbar entirely since auto-scroll handles it */
+    overflow-x: hidden;
     padding: 8px 4px 16px;
     -webkit-overflow-scrolling: touch;
-	max-width: 73%;
+	width: 100%;
+	max-width: 100rem;
+
+	align-self: center;
 
 	/* soft fade on both edges */
     mask-image: linear-gradient(
@@ -25,14 +28,12 @@
     );
 }
 .popular-section {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
     padding: 0 12px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
     box-sizing: border-box;
-    text-align: center;
-	justify-items: center;
 }
 
 /* ── Card ── */
