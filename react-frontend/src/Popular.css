@@ -116,6 +116,12 @@
 		padding: 0px;
 	}
 	.popular-bosses-track{
-		max-width: 90%;
+		width: 90%;
+	}
+}
+
+@media (max-width: 1920px){
+	.popular-bosses-track{
+		width: 75%;
 	}
 }
